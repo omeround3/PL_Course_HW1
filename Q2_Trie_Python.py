@@ -13,7 +13,7 @@ class Trie:
     def __init__(self):
         self.root = self.get_node()
     
-    # Node initialization (size of node is N=26; defined as list)
+    # Trie Node initialization (size of node is ALPHABET_SIZE=26; defined as list)
     def get_node(self):
         return TrieNode.TrieNode()
         
@@ -26,7 +26,7 @@ class Trie:
         if word == None:
             raise ValueError('A word should be a not-Null string')
 
-    # This function insert a word to the Trie
+    # This function inserts a word to the Trie
     def insert_to_trie(self, word):
         if self.is_word(word)is False:
             return False
@@ -63,24 +63,21 @@ class Trie:
 
         return currentNode is not None and currentNode.isLeaf
 
-    # THIS FUNCTION DOESN"T REALLY DELETES
-    def deleteString(self, word):
-        currentNode = self.root
-        if self.search(word):
-            for char in range(len(word)):
-                char_index = self.char_to_index(word[char])
-                currentNode = currentNode.children[char_index]
+    # Returns true if the current node has no children; else it returns false
+    def isEmptyNode(self, currentNode):
+        for i in range(TrieNode.ALPHABET_SIZE):
+            if currentNode.children[i]:
+                return False
+        return True
 
-            currentNode.isLeaf = False
-
-    # # This function deletes a word from the 
+    # These 2 functions below deletes a word from the Trie
     def delete_from_trie(self, word):
         if self.is_word(word)is False:
             return False
         self.deleteRecursive(self.root, word)
-    
+    # Recursive deletion of a word
     def deleteRecursive(self, currentNode, word, i = 0):
-        # empty trie
+        # empty trie check
         if not currentNode: 
             return None
         # If the character is terminating the word
@@ -93,7 +90,7 @@ class Trie:
                 del(currentNode)
                 currentNode = None
             return currentNode
-        # Recursive call for child
+        # Recursive call for children
         else:
             char_index = self.char_to_index(word[i])
             currentNode.children[char_index] = self.deleteRecursive(currentNode.children[char_index], word, i + 1)
@@ -104,12 +101,6 @@ class Trie:
                 currentNode = None
             return currentNode
 
-    # Returns true if the current node has no children; else it returns false
-    def isEmptyNode(self, currentNode):
-        for i in range(TrieNode.N):
-            if currentNode.children[i]:
-                return False
-        return True
 
     # def __str__(self):
     #     s = ''
@@ -123,14 +114,14 @@ class Trie:
 # driver function
 def main():
   
-    # Strings incurrentNodeut
+    # Strings input and results
     words = ["sam","and","omer","are","very", "good","students", "and", "software", "engineers"]
     result = ["The word is NOT in the trie", "The word is IN the trie"]
-  
+
+    # Trie construction
     t = Trie()
     for word in words:
         t.insert_to_trie(word)
-    
 
     # Search for different words
     print(f"sam - {result[t.search('sam')]}")
