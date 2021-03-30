@@ -1,3 +1,13 @@
+/* 
+The class implements the Trie data structure 
+
+@authors
+Sam Medina
+Omer Lev-Ron
+
+*/
+
+
 public class Trie {
     
     // Define Variables
@@ -5,7 +15,7 @@ public class Trie {
     static String exceptionWord = "A word should be a not-Null string";
 
     // Trie Node initialization (size of node is N=26; defined as list)
-    Trie() {
+    public Trie() {
         root = get_node();
     }
 
@@ -13,13 +23,13 @@ public class Trie {
 
 
     static boolean is_word(String word) {
-        if (word.isBlank())
+        if (word.isEmpty())
             return false;
         return true;
     }
 
     // This function inserts a word to the Trie
-    static void insert_to_trie(String word) throws Exception {
+    void insert_to_trie(String word) throws Exception {
         // Check that the word is not empty
         if (!is_word(word))
             throw new Exception(exceptionWord);
@@ -40,7 +50,7 @@ public class Trie {
     }
     
     // This function searches for a specific word in the Trie
-    static boolean search(String word) throws Exception {
+    boolean search(String word) throws Exception {
         // Check that the word is not empty
         if (!is_word(word))
             throw new Exception(exceptionWord);
@@ -56,7 +66,7 @@ public class Trie {
     }
 
     // Returns true if the current node has no children; else it returns false
-    static boolean isEmpty(TrieNode currentNode) {
+    boolean isEmpty(TrieNode currentNode) {
         for (int i = 0; i < TrieNode.ALPHABET_SIZE; i++) {
             if (currentNode.children[i] != null)
                 return false;
@@ -65,14 +75,14 @@ public class Trie {
     }
 
     // These 2 functions below deletes a word from the Trie
-    static void delete_from_trie(String word) throws Exception {
+    void delete_from_trie(String word) throws Exception {
         // Check that the word is not empty
         if (!is_word(word))
             throw new Exception(exceptionWord);
         deleteRecursive(root, word, 0);
     }
     // Recursive deletion of a word
-    static TrieNode deleteRecursive(TrieNode currentNode, String word, int i) {
+    TrieNode deleteRecursive(TrieNode currentNode, String word, int i) {
         // empty trie check
         if (currentNode == null)
             return null;

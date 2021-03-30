@@ -7,6 +7,7 @@ Omer Lev-Ron
 
 */
 
+
 public class TrieNode {
 
     static final int ALPHABET_SIZE = 26; // Size of the alphabet

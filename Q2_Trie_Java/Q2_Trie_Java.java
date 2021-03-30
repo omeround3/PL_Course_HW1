@@ -1,3 +1,13 @@
+/* 
+Driver class to test the Trie data structure 
+
+@authors
+Sam Medina
+Omer Lev-Ron
+
+*/
+
+
 public class Q2_Trie_Java {
 
     public static void main(String[] args) throws Exception {
@@ -22,5 +32,30 @@ public class Q2_Trie_Java {
             System.out.println("sam - " + result[1]);
         else
             System.out.println("sam - " + result[0]);
+        if (t.search("omer"))
+            System.out.println("omer - " + result[1]);
+        else
+            System.out.println("omer - " + result[0]);
+        if (t.search("students"))
+            System.out.println("students - " + result[1]);
+        else
+            System.out.println("students - " + result[0]);
+        if (t.search("sam"))
+            System.out.println("engineers - " + result[1]);
+        else
+            System.out.println("engineers - " + result[0]);
+        
+        // Remove a word
+        t.delete_from_trie("sam");
+        System.out.println("");
+        if (t.search("sam"))
+            System.out.println("sam - " + result[1]);
+        else
+            System.out.println("sam - " + result[0]);
+        if (t.search("students"))
+            System.out.println("students - " + result[1]);
+        else
+            System.out.println("students - " + result[0]);
+        
     }
 }

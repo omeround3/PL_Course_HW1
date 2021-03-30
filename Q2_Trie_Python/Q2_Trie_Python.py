@@ -129,9 +129,6 @@ def main():
     print(f"students - {result[t.search('students')]}")
     print(f"engineers - {result[t.search('engineers')]}\n")
 
-    # currentNoderint trie
-    # currentNoderint(t)
-
     # Remove a word
     t.delete_from_trie("sam")
     print(f"sam - {result[t.search('sam')]}")
