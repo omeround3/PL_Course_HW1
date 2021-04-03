@@ -1,3 +1,14 @@
+/* 
+Implemntation of the Trie data structure and
+driver class to test the code 
+
+@authors
+Sam Medina
+Omer Lev-Ron
+
+*/
+
+// The class implements a Trie node 
 class TrieNode {
   
     constructor() {
@@ -8,7 +19,8 @@ class TrieNode {
         this.isLeaf = false;
    }
  }
- 
+
+ // The class implements the Trie data structure 
  class Trie{
     //Trie initialization
     
